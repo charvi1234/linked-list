@@ -1,1 +1,1 @@
-This repo contains codes of implementation of linked list.
+This repository contains codes of implementation of linked list.
