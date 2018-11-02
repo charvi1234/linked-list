@@ -1,0 +1,65 @@
+/*
+input:-21->28->26->10->12
+a=28,b=12
+output:-21->12->26->10->28
+*/
+
+void swapNodes(struct node **head, int x, int y)
+{
+    struct node*c1=*head;
+    struct node*c2=*head;
+    while(c1->data!=x)
+    {
+        c1=c1->next;
+    }
+    while(c2->data!=y)
+    {
+        c2=c2->next;
+    }
+    int temp;
+    temp=c1->data;
+    c1->data=c2->data;
+    c2->data=temp;
+}
+
+
+int main() {
+    struct node *head =NULL;
+    struct node*curr=NULL;
+    int n,val1,val2;
+    //scanf("%d",&n);
+    int arr[n];
+    int i;
+    for(i=0;i<5;i++)
+    {
+        scanf("%d",&arr[i]);
+       // struct node*curr=head;
+        if(head==NULL)
+        {
+        curr=head;
+        curr =(struct node*)malloc(sizeof(struct node));
+        curr->data=arr[i];
+        curr->next=NULL;
+        head=curr;
+        }
+        else
+        {
+            struct node*a=(struct node*)malloc(sizeof(struct node));
+            a->data=arr[i];
+            curr->next=a;
+            a->next=NULL;
+            curr=curr->next;
+        }        
+    }
+    scanf("%d",&val1);
+    scanf("%d",&val2);
+    swapNodes(&head,val1,val2);
+    struct node*nn=head;
+    while(nn!=NULL)
+    {
+        printf("%d\n",nn->data);
+        nn=nn->next;
+    }
+    
+    return 0;
+}
