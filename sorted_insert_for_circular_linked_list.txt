@@ -1,0 +1,29 @@
+void sortedInsert(struct node** head, struct node* new_node)
+{
+    struct node*curr=*head;
+    if(curr==NULL)
+    {
+        new_node->next=new_node;
+        *head=new_node;
+    }
+    else
+    {
+        if(new_node->data>=curr->data)
+        {
+            while(curr->next!=*head&&new_node->data>curr->next->data)
+            {
+                curr=curr->next;
+            }
+            new_node->next=curr->next;
+            curr->next=new_node;
+        }
+        else
+        {
+            while(curr->next != *head) 
+                curr = curr->next; 
+            curr->next = new_node;
+            new_node->next=*head;
+            *head=new_node;
+        }
+    }
+}
