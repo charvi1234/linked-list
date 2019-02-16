@@ -2,7 +2,6 @@ int compare(struct Node*list1,struct Node*list2)
 {
     struct Node*ptr1=list1;
     struct Node*ptr2 = list2;
-    //printf("%d  ",ptr1->c);
     while(ptr1->next!=NULL&&ptr2->next!=NULL)
     {
         if(ptr1->c>ptr2->c)
