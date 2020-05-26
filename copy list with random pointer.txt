@@ -1,0 +1,46 @@
+/* https://leetcode.com/problems/copy-list-with-random-pointer/ */
+
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+class Solution {
+    public Node copyRandomList(Node head) {
+        Node newNode = new Node(0);
+        Node ptr = head;
+        Node clone = newNode;
+        HashMap<Node,Node> hmap = new HashMap<>();
+        while(ptr != null)
+        {
+            Node cloneNode = new Node(ptr.val);
+            hmap.put(ptr, cloneNode);
+            clone.next = cloneNode;
+            clone = clone.next;
+            ptr = ptr.next;
+        }
+        ptr = head;
+        clone = newNode.next;
+        while(ptr!= null)
+        {
+            if(ptr.random == null)
+                clone.random = null;
+            else
+            {
+                clone.random = hmap.get(ptr.random);
+            }
+            clone = clone.next;
+            ptr = ptr.next;
+        }
+        return newNode.next;
+    }
+}
